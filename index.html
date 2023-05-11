@@ -14,7 +14,7 @@
         <div class="row">
             <h1 class="mt-4">TO DO LIST</h1>
             <div>
-                <input v-model="newTask" class="col-4 mt-4" type="text" placeholder="Insert new task">
+                <input @keyup.enter="addTask()" v-model="newTask" class="col-4 mt-4" type="text" placeholder="Insert new task">
                 <button @click="addTask()">Send</button>
             </div>
             <div class="mt-4">
