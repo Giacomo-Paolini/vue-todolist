@@ -22,11 +22,13 @@ createApp ({
     },
     methods: {
         addTask() {
-            this.list.push({
-                text: this.newTask,
-                done: false
-            });
-            this.newTask = "";
+            if (this.newTask.length > 2) {
+                this.list.push({
+                    text: this.newTask,
+                    done: false
+                });
+                this.newTask = "";
+            }
         },
         completeTask(i) {
             this.list[i].done = !this.list[i].done;

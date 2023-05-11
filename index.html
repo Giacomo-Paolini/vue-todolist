@@ -14,14 +14,15 @@
         <div class="row">
             <h1 class="mt-4">TO DO LIST</h1>
             <div>
-                <input @keyup.enter="addTask()" v-model="newTask" class="col-4 mt-4" type="text" placeholder="Insert new task">
-                <button @click="addTask()">Send</button>
+                <input @keyup.enter="addTask()" pattern=".{3,}"   required title="3 characters minimum" v-model="newTask" class="col-4 mt-4" type="text" placeholder="Insert new task">
+                <button @click="addTask()" pattern=".{3,}"   required title="3 characters minimum">Send</button><br>
             </div>
+            <span class="mt-2" v-if="newTask.length < 3">Enter at least 3 letters.</span>
             <div class="mt-4">
                 <ul>
                     <li v-for="(task, i) in list" class="mb-3" :class="textDecoration(i)">{{list[i].text}}
-                        <button @click="completeTask(i)" v-b-tooltip.hover title="Done" class="ms-5">✅</button>
-                        <button @click="removeTask(i)" v-b-tooltip.hover title="Delete" class="ms-2">❌</button>
+                        <button @click="completeTask(i)" class="ms-5">✅</button>
+                        <button @click="removeTask(i)" class="ms-2">❌</button>
                     </li>
                 </ul>
             </div>
